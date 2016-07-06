@@ -15,7 +15,7 @@ Awaken.prototype.run = function(script, dynoSize, args) {
       return this.local(script, args);
     }
 
-    herokuClient.dynos().create({
+    this.client.dynos().create({
       command: `awaken ${path.join(this.commands, script)} ${args}`,
       size: dynoSize || 'Free',
     }, (err, result) => {
