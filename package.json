@@ -1,6 +1,6 @@
 {
   "name": "awaken",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Awaken dynos to do your bidding.",
   "main": "index.js",
   "scripts": {
