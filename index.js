@@ -1,10 +1,10 @@
 const Heroku = require('heroku-client');
 const path = require('path');
 
-function Awaken(token, commandDirectory) {
+function Awaken(token, commandDirectory, app) {
   this.token = token;
   this.commands = path.resolve(process.cwd(), commandDirectory || './workers');
-  this.client = new Heroku({ token: this.token });
+  this.client = new Heroku({ token: this.token }).apps(app || process.env.HEROKU_APP);
 }
 
 Awaken.prototype.run = function(script, dynoSize, args) {
