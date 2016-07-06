@@ -5,7 +5,7 @@ class Awaken {
 
   constructor(token, commandDirectory, app) {
     this.token = token;
-    this.commands = path.resolve(process.cwd(), commandDirectory || './workers');
+    this.commands = commandDirectory || './workers';
     this.client = new Heroku({ token: this.token }).apps(app || process.env.HEROKU_APP);
   }
 
@@ -28,7 +28,7 @@ class Awaken {
   }
 
   local(script, args) {
-    script = require(path.join(this.commands, script));
+    script = require(path.resolve(process.cwd(), this.commands, script));
 
     return new Promise((resolve, reject) => {
       if (typeof script.run !== 'function')

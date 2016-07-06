@@ -3,7 +3,7 @@ const path = require('path');
 
 const worker = process.argv[2];
 const args = process.argv[3];
-const script = require(worker);
+const script = require(path.resolve(process.cwd(), worker));
 
 var hooks = path.resolve(path.dirname(worker), 'hooks');
 
